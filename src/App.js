@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import Header from '../src/components/Header/Header'
+import Header from '../src/components/Header/Header';
+import Search from '../src/components/Search/Search';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <Header />
+      <div>
+        <Header />
+        <Search />
+      </div>
     );
   }
 }

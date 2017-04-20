@@ -1,11 +1,12 @@
 import React from 'react';
-import { Button, ButtonGroup } from 'react-bootstrap';
+import { Button } from 'reactstrap'
+import './Header.css'
 
 const Header = () => (
 <div>
-  <Button>Podcast Search</Button>
-  <Button>GitHub</Button>
-  <Button>Demo</Button>
+  <Button color="secondary" className="button">Podcast Search</Button>
+  <Button color="secondary" className="button">GitHub</Button>
+  <Button color="secondary" className="button">Demo</Button>
 </div>
 )
 export default Header
