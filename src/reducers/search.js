@@ -1,5 +1,6 @@
 const initalState = {
   Loading: false,
+  podcasts: [],
 }
  const search = (state = initalState, action) => {
   switch(action.type) {
@@ -12,6 +13,7 @@ const initalState = {
         return{
           ...state,
           Loading: false,
+          podcasts: action.data
         }
       default:
         return state

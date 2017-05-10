@@ -6,8 +6,7 @@ import {
 import Header from '../src/components/Header/Header';
 import Search from '../src/components/Search/Search';
 import Splash from '../src/components/splash/Splash';
-import Results from '../src/components/results/Results';
-import Loading from '../src/components/Loading/Loading';
+import Results from '../src/components/Results/Results';
 import './App.css';
 
 class App extends Component {

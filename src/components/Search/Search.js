@@ -1,52 +1,41 @@
-import React from 'react';
-import Loading from '../Loading/Loading';
-import Results from '../results/Results';
-import { connect } from 'react-redux';
-import {  Form, Label, Input, Button} from 'reactstrap';
+import React from 'react'
+import Loading from '../Loading/Loading'
+import Results from '../Results/Results'
+import { connect } from 'react-redux'
+import {  Form, Label, Input, Button } from 'reactstrap'
 import { getPodcasts } from '../../actions/index'
-import './Search.css';
+import './Search.css'
 
-const Search = ({typeOfSearch, searchRequest, sendSearch, loadingNow}) => (
+const Search = ({typeOfSearch, sendSearch, loadingNow}) => (
   <div>
      <Form onSubmit={(e)=>{
-         e.preventDefault();
+         e.preventDefault()
          let selectedValue = ''
-         if(e.target.select.value === 'Author'){
-           selectedValue = `authorTerm`
-           console.log(selectedValue)
+         if(e.target.select.value === `A search for technology related shows`){
+           selectedValue = `https://itunes.apple.com/search?term=technology&country=us&entity=podcast&limit=50`
          }
-         if(e.target.select.value === 'Genre'){
-           selectedValue = `genreIndex`
+         if(e.target.select.value === `A search for life hacks`){
+           selectedValue = `https://itunes.apple.com/search?term=life+hacks&country=us&entity=podcast&limit=50`
          }
-         if(e.target.select.value === 'Title'){
-           selectedValue = `titleTerm`
+         if(e.target.select.value === `A search for the How Stuff Works podcast`){
+           selectedValue = `https://itunes.apple.com/search?term=how+stuff+works&country=us&entity=podcast&limit=50`
          }
-         if(e.target.select.value === 'Keywords'){
-           selectedValue = `keywordsTerm`
-         }
-         let searchValue = e.target.search.value
-         searchValue = searchValue.split(' ').join('+')
-         console.log(searchValue)
-
+         sendSearch(selectedValue)
        }}>
        <Label for="Select">Pick A Search Type</Label>
           <Input type="select" name="select" id="Selctor">
-            <option>Author</option>
-            <option>Genre</option>
-            <option>Title</option>
-            <option>Keywords</option>
+            <option>A search for technology related shows</option>
+            <option>A search for life hacks</option>
+            <option>A search for the How Stuff Works podcast</option>
           </Input>
-          <Input type="text" name="search" id="searchBox"></Input>
           <Button color="sucess" type="submit">Search</Button>
+
      </Form>
-
-      {this.props.loadingNow ? <Loading /> : <Results/>}
-
+      {loadingNow ? <Loading /> : <Results/>}
    </div>
 )
 const mapDispatchToProps = (dispatch) => ({
-  sendSearch: (selectedValue, searchValue) => dispatch(getPodcasts(selectedValue, searchValue)),
-  loadPodcast: () => dispatch()
+  sendSearch: (selectedValue) => dispatch(getPodcasts(selectedValue)),
 });
 
 const mapStateToProps = (state) => ({
