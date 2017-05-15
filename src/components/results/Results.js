@@ -38,7 +38,7 @@ console.log(data);
           actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
           cols={2}
         >
-          <img src={tile.artworkUrl600} />
+          <img src={tile.artworkUrl600} alt={'none'} />
         </GridTile>
       ))}
     </GridList>

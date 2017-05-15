@@ -2,14 +2,9 @@ import React from 'react';
 
 import { Card, CardTitle, CardText} from 'material-ui/Card'
 
-const styles = {
-  test: {
-    color: 'red500'
-  }
-}
 
 const Splash = () => (
-  <Card style={styles.test}>
+  <Card style={{width:'900px', paddingLeft:'50px'}}>
     <CardTitle
       title='Podcast Search'
      />

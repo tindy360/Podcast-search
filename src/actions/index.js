@@ -7,7 +7,7 @@ const dataReceived = (data) => ({
 })
 export const getPodcasts = (selectedValue) => {
   return dispatch => {
-    const url = selectedValue
+    const url = `https://itunes.apple.com/search?term=${selectedValue}&country=us&entity=podcast&limit=50`
     console.log(url)
     dispatch(requestData())
     fetch(url)
