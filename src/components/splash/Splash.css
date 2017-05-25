@@ -1,8 +1,21 @@
-.box {
-  width: auto;
-  height: auto;
-  box-sizing: border-box;
-  border: black;
-  background: #303F9F;
-  pad
+.wrapper{
+  width: 100%;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.title{
+  color: #fff;
+  margin-top: 100px;
+  text-align: center;
+  font-size: 100px;
+  text-shadow: 5px 5px 7px black;
+}
+.paragraph{
+  text-align: center;
+  font-size: 25px;
+  color:#fff;
+  text-shadow: 2px 2px 4px black;
+  font-style: italic;
+}
+.button{
+  text-shadow: 2px 2px 4px white;
 }

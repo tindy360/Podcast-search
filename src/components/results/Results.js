@@ -1,55 +1,58 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import {GridList, GridTile} from 'material-ui/GridList'
-import Subheader from 'material-ui/Subheader'
-import IconButton from 'material-ui/IconButton'
-import StarBorder from 'material-ui/svg-icons/toggle/star-border'
-import './Results.css'
+import React from 'react';
+import { connect } from 'react-redux';
+import { GridList, GridTile } from 'material-ui/GridList';
+import IconButton from 'material-ui/IconButton';
+import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import { addFavorite } from '../../actions';
 
-const styles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-  },
-  gridList: {
-    width: 500,
-    height: 450,
-    overflowY: 'auto',
-  },
+const Results = ({ data, favarray, favorite, showSnackBar }) => {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around'
+      }}
+    >
+      <GridList
+        cellHeight={180}
+        style={{
+          width: '95%',
+          height: '95%',
+          overflowY: 'auto'
+        }}
+        cols={6}
+      >
+
+        {data.map((tile, i) => (
+          <GridTile
+            key={i}
+            title={tile.trackName}
+            subtitle={<span>by <b>{tile.artistName}</b></span>}
+            actionIcon={
+              <IconButton onClick={() => favorite(tile)}>
+                <StarBorder color="white" />
+              </IconButton>
+            }
+            cols={2}
+          >
+            <img src={tile.artworkUrl600} alt={'none'} />
+          </GridTile>
+        ))}
+      </GridList>
+
+    </div>
+  );
 };
 
+const mapStateToProps = state => ({
+  data: state.podcasts,
+  showSnackBar: state.SnackBar,
+  favarray: state.favorites
+});
 
-const Results = ({data}) => {
-console.log(data);
-  return(
-    <div style={styles.root}>
-    <GridList
-      cellHeight={180}
-      style={styles.gridList}
-      cols={6}
-    >
-      <Subheader>podcasts</Subheader>
-      {data.map((tile, i) => (
-        <GridTile
-          key={i}
-          title={tile.trackName}
-          subtitle={<span>by <b>{tile.artistName}</b></span>}
-          actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-          cols={2}
-        >
-          <img src={tile.artworkUrl600} alt={'none'} />
-        </GridTile>
-      ))}
-    </GridList>
-  </div>
-  )
-}
+const mapDispatchToProps = dispatch => ({
+  favorite: tile => dispatch(addFavorite(tile))
+});
 
-
-
-const mapStateToProps = (state) => ({
-  data: state.podcasts
-})
-
-export default connect(mapStateToProps)(Results)
+export default connect(mapStateToProps, mapDispatchToProps)(Results);

@@ -1,37 +1,53 @@
-import React from 'react'
-import Loading from '../Loading/Loading'
-import Results from '../Results/Results'
-import TextField from 'material-ui/TextField'
-import { connect } from 'react-redux'
-import {  Form, Label, Input, Button } from 'reactstrap'
-import { getPodcasts } from '../../actions/index'
-import './Search.css'
+import React from 'react';
+import Loading from '../Loading/Loading';
+import Results from '../Results/Results';
+import Header from '../Header/Header';
+import TextField from 'material-ui/TextField';
+import { connect } from 'react-redux';
+import { Form } from 'reactstrap';
+import { getPodcasts } from '../../actions/index';
+import Snackbar from 'material-ui/Snackbar';
+import './Search.css';
 
-const Search = ({typeOfSearch, sendSearch, loadingNow}) => (
+const Search = ({ typeOfSearch, sendSearch, loadingNow, showSnackBar, snackBarMessage }) => (
   <div>
-     <Form onSubmit={(e)=>{
-         e.preventDefault()
-         let selectedValue =  e.target.search.value
-          selectedValue = selectedValue.split(' ').join('+')
-           console.log(selectedValue)
+    <Header />
+    <Form
+      onSubmit={e => {
+        e.preventDefault();
+        let selectedValue = e.target.search.value;
+        selectedValue = selectedValue.split(' ').join('+');
+        sendSearch(selectedValue);
+        e.target.search.value = 'enter new search term';
+      }}
+    >
 
+      <TextField
+        className="search"
+        style={{ postion: 'absolute', left: '550px', color: '#fff' }}
+        inputStyle={{ color: 'white' }}
+        name="search"
+        hintText="Enter Search Term"
+        hintStyle={{ color: 'white' }}
+      />
+    </Form>
+    {loadingNow ? <Loading /> : <Results />}
+    <Snackbar
+          open={showSnackBar}
+          message={snackBarMessage}
+          autoHideDuration={3000}
 
-         sendSearch(selectedValue)
-       }}>
-          <TextField name="search" hintText="Hint Text"  /><br />
-          <Button color="sucess" type="submit">Search</Button>
-
-     </Form>
-      {loadingNow ? <Loading /> : <Results/>}
-   </div>
-)
-const mapDispatchToProps = (dispatch) => ({
-  sendSearch: (selectedValue) => dispatch(getPodcasts(selectedValue)),
+        />
+  </div>
+);
+const mapDispatchToProps = dispatch => ({
+  sendSearch: selectedValue => dispatch(getPodcasts(selectedValue))
 });
 
-const mapStateToProps = (state) => ({
-  loadingNow: state.Loading
-})
+const mapStateToProps = state => ({
+  loadingNow: state.Loading,
+  showSnackBar: state.open,
+  snackBarMessage: state.message
+});
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Search)
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

@@ -1,37 +1,26 @@
-import React from 'react';
-import IconMenu from 'material-ui/IconMenu';
-import IconButton from 'material-ui/IconButton';
-import FontIcon from 'material-ui/FontIcon';
-import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
-import MenuItem from 'material-ui/MenuItem';
+import React from 'react'
 import { Link } from 'react-router-dom'
-import RaisedButton from 'material-ui/RaisedButton';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import IconMenu from 'material-ui/IconMenu'
+import MenuItem from 'material-ui/MenuItem'
+import IconButton from 'material-ui/IconButton'
+import MenuIcon from 'material-ui/svg-icons/navigation/menu'
 
-export default class ToolbarExamplesSimple extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 3,
-    };
-  }
 
-  handleChange = (event, index, value) => this.setState({value});
+const Header = () => (
+<div>
 
-  render() {
-    return (
-      <Toolbar>
-        <ToolbarGroup firstChild={true}>
-<a className="github-button" href="https://github.com/tindy360/Podcast-search" data-size="large" aria-label="GitHub">GitHub</a>
-        </ToolbarGroup>
-        <ToolbarGroup>
-          <ToolbarTitle text="Podcast Search" />
-          <FontIcon className="muidocs-icon-custom-sort" />
-          <ToolbarSeparator />
-        <Link to='/search'>  <RaisedButton label="Start Search" primary={true}> </RaisedButton> </Link>
-        </ToolbarGroup>
-      </Toolbar>
-    );
-  }
-}
+   <IconMenu
+    iconButtonElement={<IconButton><MenuIcon /></IconButton>}
+    anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+    targetOrigin={{horizontal: 'left', vertical: 'top'}}
+    iconStyle={{color:'#28ea1e'}}
+  >
+    <Link to={`/search`}><MenuItem primaryText="Search" /></Link>
+    <Link to={`/favorites`}><MenuItem primaryText="favorites" /></Link>
+  </IconMenu>
+
+</div>
+
+)
+export default Header
