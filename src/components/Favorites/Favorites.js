@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { GridList, GridTile } from 'material-ui/GridList';
 import FlatButton from 'material-ui/FlatButton';
 import Header from '../Header/Header';
+import { deleteFavorite } from '../../actions';
 
-const Favorites = ({ favorites }) => {
+const Favorites = ({ favorites, deleteFav }) => {
   return (
     <div>
       <Header />
@@ -32,11 +33,18 @@ const Favorites = ({ favorites }) => {
               subtitle={<span>by <b>{tile.trackName}</b></span>}
               cols={2}
               actionIcon={
+                <div>
                 <FlatButton
-                  label="Listen Here"
+                  label='Listen'
                   labelStyle={{ color: '#FFF' }}
                   href={tile.trackViewUrl}
                 />
+                <FlatButton
+                  label='delete'
+                  labelStyle={{ color: '#FFF' }}
+                  onClick={()=>deleteFav(i)}
+                 />
+                </div>
               }
             >
               <img src={tile.artworkUrl600} alt={'none'} />
@@ -53,5 +61,7 @@ const Favorites = ({ favorites }) => {
 const mapStateToProps = state => ({
   favorites: state.favorites
 });
-
-export default connect(mapStateToProps)(Favorites);
+const mapDispatchToProps = dispatch => ({
+  deleteFav: (index) => dispatch(deleteFavorite(index))
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Favorites);

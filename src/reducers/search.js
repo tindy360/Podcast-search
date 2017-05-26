@@ -34,8 +34,13 @@ const search = (state = initalState, action) => {
     case 'CLOSE_SNACKBAR':
       return {
         ...state,
-        open: false 
+        open: false
       };
+      case 'DELETE_ITEM':
+        return [
+      ...state.favorites.slice(0, action.index),
+      ...state.favorites.slice(action.index + 1)
+     ]
     default:
       return state;
   }

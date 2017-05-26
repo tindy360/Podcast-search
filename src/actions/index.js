@@ -20,34 +20,31 @@ export const getPodcasts = selectedValue => {
     );
   };
 };
-
-
 export const addFavorite = favorite => (dispatch, getState) => {
   const { favorites } = getState();
 
   if (!favorites.includes(favorite)) {
-     dispatch({
+    dispatch({
       type: 'ADDING_FAVORITE',
       favorite
     });
-    return setTimeout(() =>{
+    return setTimeout(() => {
       dispatch({
-        type:'CLOSE_SNACKBAR'
-      })
+        type: 'CLOSE_SNACKBAR'
+      });
     }, 3000);
   }
 
-   dispatch({
-    type:'FAVORITE_ALREADY_ADDED'
-  })
-  return setTimeout(() =>{
+  dispatch({
+    type: 'FAVORITE_ALREADY_ADDED'
+  });
+  return setTimeout(() => {
     dispatch({
-      type:'CLOSE_SNACKBAR'
-    })
+      type: 'CLOSE_SNACKBAR'
+    });
   }, 3000);
 };
-
-export const deleteFavorite = () => (dispatch, getState) => {
-  const { favorites } = getState();
-    console.log(favorites);
-}
+export const deleteFavorite = index => ({
+  type: 'DELETE_ITEM',
+  index
+});
