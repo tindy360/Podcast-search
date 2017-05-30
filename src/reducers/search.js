@@ -37,10 +37,15 @@ const search = (state = initalState, action) => {
         open: false
       };
       case 'DELETE_ITEM':
-        return [
-      ...state.favorites.slice(0, action.index),
-      ...state.favorites.slice(action.index + 1)
-     ]
+          const favorites = state.favorites.filter((favorite) => {
+            return favorite.trackId !== action.trackId
+          })
+          return{
+            ...state,
+            favorites
+          }
+
+
     default:
       return state;
   }

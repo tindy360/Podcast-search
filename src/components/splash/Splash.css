@@ -2,6 +2,12 @@
   width: 100%;
   font-family: 'Roboto Condensed', sans-serif;
 }
+.button{
+  color: grey;
+  position: relative;
+  left: 45%;
+  top: 50px;
+}
 .title{
   color: #fff;
   margin-top: 100px;
@@ -15,7 +21,4 @@
   color:#fff;
   text-shadow: 2px 2px 4px black;
   font-style: italic;
-}
-.button{
-  text-shadow: 2px 2px 4px white;
 }

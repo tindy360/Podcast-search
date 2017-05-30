@@ -32,7 +32,7 @@ export const addFavorite = favorite => (dispatch, getState) => {
       dispatch({
         type: 'CLOSE_SNACKBAR'
       });
-    }, 3000);
+    }, 2000);
   }
 
   dispatch({
@@ -42,9 +42,9 @@ export const addFavorite = favorite => (dispatch, getState) => {
     dispatch({
       type: 'CLOSE_SNACKBAR'
     });
-  }, 3000);
+  }, 2000);
 };
-export const deleteFavorite = index => ({
+export const deleteFavorite = trackId => ({
   type: 'DELETE_ITEM',
-  index
+  trackId
 });

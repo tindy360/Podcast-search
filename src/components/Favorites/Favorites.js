@@ -42,7 +42,7 @@ const Favorites = ({ favorites, deleteFav }) => {
                 <FlatButton
                   label='delete'
                   labelStyle={{ color: '#FFF' }}
-                  onClick={()=>deleteFav(i)}
+                  onClick={()=>deleteFav(tile.trackId)}
                  />
                 </div>
               }
@@ -62,6 +62,6 @@ const mapStateToProps = state => ({
   favorites: state.favorites
 });
 const mapDispatchToProps = dispatch => ({
-  deleteFav: (index) => dispatch(deleteFavorite(index))
+  deleteFav: (trackId) => dispatch(deleteFavorite(trackId))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Favorites);

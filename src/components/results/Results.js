@@ -26,7 +26,7 @@ const Results = ({ data, favarray, favorite, showSnackBar }) => {
 
         {data.map((tile, i) => (
           <GridTile
-            key={i}
+            key={tile.trackId}
             title={tile.trackName}
             subtitle={<span>by <b>{tile.artistName}</b></span>}
             actionIcon={

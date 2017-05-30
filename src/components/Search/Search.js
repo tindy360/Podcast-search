@@ -35,7 +35,7 @@ const Search = ({ typeOfSearch, sendSearch, loadingNow, showSnackBar, snackBarMe
     <Snackbar
           open={showSnackBar}
           message={snackBarMessage}
-          autoHideDuration={3000}
+          autoHideDuration={2000}
 
         />
   </div>
