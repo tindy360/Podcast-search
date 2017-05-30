@@ -1,6 +1,6 @@
 import React from 'react';
 import Loading from '../Loading/Loading';
-import Results from '../Results/Results';
+import Results from '../results/Results';
 import Header from '../Header/Header';
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
