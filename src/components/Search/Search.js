@@ -21,7 +21,6 @@ const Search = ({ typeOfSearch, sendSearch, loadingNow, showSnackBar, snackBarMe
         e.target.search.value = 'enter new search term';
       }}
     >
-
       <TextField
         className="search"
         style={{ postion: 'absolute', left: '550px', color: '#fff' }}

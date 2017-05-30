@@ -23,7 +23,6 @@ const Results = ({ data, favarray, favorite, showSnackBar }) => {
         }}
         cols={6}
       >
-
         {data.map((tile, i) => (
           <GridTile
             key={tile.trackId}

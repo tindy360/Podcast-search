@@ -25,7 +25,6 @@ const Favorites = ({ favorites, deleteFav }) => {
           }}
           cols={6}
         >
-
           {favorites.map((tile, i) => (
             <GridTile
               key={i}

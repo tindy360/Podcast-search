@@ -9,7 +9,6 @@ import MenuIcon from 'material-ui/svg-icons/navigation/menu'
 
 const Header = () => (
 <div>
-
    <IconMenu
     iconButtonElement={<IconButton><MenuIcon /></IconButton>}
     anchorOrigin={{horizontal: 'left', vertical: 'top'}}
