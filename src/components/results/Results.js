@@ -33,7 +33,6 @@ const Results = ({ data, favarray, favorite, showSnackBar }) => {
             subtitle={<span>by <b>{tile.artistName}</b></span>}
             actionIcon={
               <IconButton onClick={() => favorite(tile)}
-              onTouchTap={}
               >
                 <StarBorder color="white" />
               </IconButton>
