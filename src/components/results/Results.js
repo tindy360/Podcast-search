@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { GridList, GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-import { addFavorite } from '../../actions';
+import SnackBar from '../SnackBar/SnackBar';
+import Favorites from '../Favorites/Favorites';
+import { addFavorite, toggleSnackBar } from '../../actions';
 
 const Results = ({ data, favarray, favorite, showSnackBar }) => {
   return (
@@ -23,13 +25,16 @@ const Results = ({ data, favarray, favorite, showSnackBar }) => {
         }}
         cols={6}
       >
+
         {data.map((tile, i) => (
           <GridTile
-            key={tile.trackId}
+            key={i}
             title={tile.trackName}
             subtitle={<span>by <b>{tile.artistName}</b></span>}
             actionIcon={
-              <IconButton onClick={() => favorite(tile)}>
+              <IconButton onClick={() => favorite(tile)}
+              onTouchTap={}
+              >
                 <StarBorder color="white" />
               </IconButton>
             }
@@ -39,7 +44,7 @@ const Results = ({ data, favarray, favorite, showSnackBar }) => {
           </GridTile>
         ))}
       </GridList>
-
+      <SnackBar></SnackBar>
     </div>
   );
 };

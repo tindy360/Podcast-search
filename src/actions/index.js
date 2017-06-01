@@ -11,7 +11,7 @@ export const toggleSnackBar = () => ({
 });
 export const getPodcasts = selectedValue => {
   return dispatch => {
-    const url = `https://itunes.apple.com/search?term=${selectedValue}&country=us&entity=podcast&limit=50`;
+    const url = `https://crossorigin.me/https://itunes.apple.com/search?term=${selectedValue}&country=us&entity=podcast&limit=50`;
     dispatch(requestData());
     fetch(url).then(response => response.json()).then(json =>
       setTimeout(() => {
